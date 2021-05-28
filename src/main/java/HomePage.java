@@ -1,27 +1,24 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
     WebDriver driver;
+    By researchBarSelector = By.id("twotabsearchtextbox");
+    By loopSearchSelector = By.id("nav-search-submit-button");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public HomePage enterSearchRequest() {
-        String recherche = "Nintendo switch";
-        By barreRechercheSelector = By.id("twotabsearchtextbox");
-        driver.findElement(barreRechercheSelector).sendKeys(recherche);
+    public HomePage enterSearchRequest(String research) {
+        driver.findElement(researchBarSelector).sendKeys(research);
         return this;
     }
 
-        public NintendoSwitchPage sendSearchRequest () {
-            By loopSearchSelector = By.id("nav-search-submit-button");
+        public NintendoItemsListPage sendSearchRequest () {
             driver.findElement(loopSearchSelector).click();
-            return new NintendoSwitchPage(driver);
+            return new NintendoItemsListPage(driver);
         }
 
 

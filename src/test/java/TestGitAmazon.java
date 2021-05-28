@@ -31,17 +31,18 @@ public class TestGitAmazon {
     @Test
     public void testAmazon() {
         // Arrange
+        String expectedString = "Nintendo Switch";
 
         // Act
         HomePage amazonHomePage = new HomePage(driver);
-        boolean isTitleNintendoSwitchDisplayed = amazonHomePage
-                .enterSearchRequest()
+        String  articleTitle = amazonHomePage
+                .enterSearchRequest("Nintendo switch")
                 .sendSearchRequest()
                 .openFirstNintendoItem()
-                .isTitleNintendoSwitchDisplayed();
+                .articleTitle();
 
         // Asserts
-        Assert.assertTrue(isTitleNintendoSwitchDisplayed, "La chaine Nintendo Switch n'est pas visible");
+        Assert.assertTrue(articleTitle.contains(expectedString), "The string Nintendo Switch is not visible");
     }
 
 }

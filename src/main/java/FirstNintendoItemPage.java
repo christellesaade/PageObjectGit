@@ -5,17 +5,15 @@ import org.testng.Assert;
 
 public class FirstNintendoItemPage {
     WebDriver driver;
+    By articleNameSelector = By.id("productTitle");
 
 
     public FirstNintendoItemPage(WebDriver driver) {
         this.driver = driver;
     }
-    public boolean isTitleNintendoSwitchDisplayed() {
-
-        By nomArticleSelector = By.id("productTitle");
-        String nomArticleLabel = driver.findElement(nomArticleSelector).getText();
-        String chaineAttendue = "Nintendo Switch";
-        return nomArticleLabel.contains(chaineAttendue);
+    public String articleTitle() {
+        String articleNameLabel = driver.findElement(articleNameSelector).getText();
+        return articleNameLabel;
     }
 }
 
